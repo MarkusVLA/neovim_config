@@ -34,13 +34,13 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 ```bash
 git clone git@github.com:MarkusVLA/neovim_config.git
 mkdir -p ~/.config/nvim
-cp -r dotfiles/nvim/* ~/.config/nvim/
+cp -r neovim_config/* ~/.config/nvim/
 ```
 4. Install plugins in Neovim:
 ```
 :PackerSync
 ```
-5. Install language servers through Mason:
+5. Install language servers through Mason
 ```
 :Mason
 ```
