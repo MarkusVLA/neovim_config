@@ -15,8 +15,7 @@ Lightweight Neovim configuration with LSP support for C and Python.
 
 - Neovim >= 0.9.0
 - Node.js and npm (for pyright LSP)
-- git (for plugin management)
-- gcc/clang (for C/C++ development)
+- git
 
 ## Installation
 
@@ -33,7 +32,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 ```
 3. Clone this repo and copy configuration:
 ```bash
-git clone https://github.com/yourusername/dotfiles.git
+git clone git@github.com:MarkusVLA/neovim_config.git
 mkdir -p ~/.config/nvim
 cp -r dotfiles/nvim/* ~/.config/nvim/
 ```
