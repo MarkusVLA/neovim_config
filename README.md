@@ -19,28 +19,22 @@ Lightweight Neovim configuration with LSP support for C and Python.
 
 ## Installation
 
-1. Install Neovim:
-```bash
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-sudo mv nvim.appimage /usr/local/bin/nvim
-```
-2. Install Packer (plugin manager):
+1. Install Packer (plugin manager):
 ```bash
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
-3. Clone this repo and copy configuration:
+2. Clone this repo and copy configuration:
 ```bash
 git clone git@github.com:MarkusVLA/neovim_config.git
 mkdir -p ~/.config/nvim
 cp -r neovim_config/* ~/.config/nvim/
 ```
-4. Install plugins in Neovim:
+3. Install plugins in Neovim:
 ```
 :PackerSync
 ```
-5. Install language servers through Mason
+4. Install language servers through Mason
 ```
 :Mason
 ```
