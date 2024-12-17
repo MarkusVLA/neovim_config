@@ -69,6 +69,15 @@ require('packer').startup(function(use)
             'hrsh7th/cmp-nvim-lsp',
         }
     }
+
+    -- Telescope
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+        }
+    }
 end)
 
 -- Setup Mason
@@ -96,6 +105,14 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Setup C/C++ LSP (clangd)
 require('lspconfig').clangd.setup({
     capabilities = capabilities,
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=iwyu",
+        "--completion-style=detailed",
+        "--function-arg-placeholders"
+    },
     on_attach = function(client, bufnr)
         -- Enable completion triggered by <c-x><c-o>
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -121,3 +138,22 @@ require('lspconfig').pyright.setup({
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     end,
 })
+
+-- Telescope setup and keymaps
+require('telescope').setup({
+    defaults = {
+        file_ignore_patterns = { "node_modules", ".git" },
+        mappings = {
+            i = {
+                ["<C-j>"] = "move_selection_next",
+                ["<C-k>"] = "move_selection_previous",
+            }
+        }
+    }
+})
+
+-- Telescope keymaps
+vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+vim.keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
